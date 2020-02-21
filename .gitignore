@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PaymentContext.Tests/bin/Debug/netcoreapp3.0
+/PaymentContext.Tests/obj/Debug/netcoreapp3.0
+/PaymentContext.Tests/obj
+/PaymentContext.Shared/bin/Debug/netstandard2.0
+/PaymentContext.Shared/obj
+/PaymentContext.Domain/bin/Debug/netstandard2.0
+/PaymentContext.Domain/obj/Debug/netstandard2.0
+/PaymentContext.Domain/obj
+/.vs/Payment Context/DesignTimeBuild
+/.vs/Payment Context/v16/Server/sqlite3
+/.vs/Payment Context/v16/.suo
