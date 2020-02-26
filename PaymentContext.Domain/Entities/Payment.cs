@@ -7,7 +7,7 @@ namespace PaymentContext.Domain.Entities
 {
     public abstract class Payment : Notifiable
     {
-        protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, Address address, Document document, string owner, Email email)
+        protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, Address address, Document document, Email email)
         {
             Number = Guid.NewGuid().ToString().Replace("-","").Substring(0,10).ToUpper();
             PaidDate = paidDate;
@@ -16,13 +16,12 @@ namespace PaymentContext.Domain.Entities
             TotalPaid = totalPaid;
             Address = address;
             Document = document;
-            Owner = owner;
             Email = email;
 
             AddNotifications(new Contract()
                     .Requires()
-                    .IsGreaterThan(0, Total, "Payment.DocTotal", "O total não pode ser zero")
-                    .IsGreaterOrEqualsThan(0, TotalPaid, "Payment.TotalPaid", "O valor pago é menor do que o valor do pagamento")
+                    .IsLowerOrEqualsThan(0, Total, "Payment.DocTotal", "O total não pode ser zero")
+                    .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor do que o valor do pagamento")
                     );
         }
 

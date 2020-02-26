@@ -9,10 +9,10 @@ namespace PaymentContext.Domain.Entities
                              DateTime paidDate, 
                              DateTime expireDate, 
                              decimal total, 
-                             decimal totalPaid, 
+                             decimal totalPaid,
+                             string payer,
                              Address address, 
                              Document document, 
-                             string owner, 
                              Email email): base(
                                  paidDate, 
                                  expireDate, 
@@ -20,7 +20,6 @@ namespace PaymentContext.Domain.Entities
                                  totalPaid, 
                                  address, 
                                  document, 
-                                 owner, 
                                  email)
         {
             TransactionCode = transactionCode;

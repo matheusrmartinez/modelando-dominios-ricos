@@ -14,7 +14,6 @@ namespace PaymentContext.Domain.Entities
                                  decimal totalPaid, 
                                  Address address, 
                                  Document document, 
-                                 string owner, 
                                  Email email):base(
                                      paidDate, 
                                      expireDate, 
@@ -22,7 +21,6 @@ namespace PaymentContext.Domain.Entities
                                      totalPaid, 
                                      address, 
                                      document, 
-                                     owner, 
                                      email)
         {
             CardHolderName = cardHolderName;
