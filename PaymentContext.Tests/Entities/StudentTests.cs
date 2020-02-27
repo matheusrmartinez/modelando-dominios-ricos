@@ -20,8 +20,8 @@ namespace PaymentContext.Tests.Entities
         {
             _document = new Document("40121050911", EDocumentType.CPF);
             _address = new Address("Rua João", "132", "Trujillo", "Sorocaba", "São Paulo", "Brasil", "18016200");
-            _email = new Email("matheus.rmartinez@gmail.com");
-            _name = new Name("Matheus", "Martinez");
+            _email = new Email("joao.silva@gmail.com");
+            _name = new Name("João", "Silva");
             _student = new Student(_name, _document, _email);
             _subscription = new Subscription(null);
         }
@@ -29,17 +29,19 @@ namespace PaymentContext.Tests.Entities
         [TestMethod]
         public void ShouldReturnErrorWhenHadActiveSubscription()
         {
+            var subscription = new Subscription(null);
             var payment = new PayPalPayment("0123479", DateTime.Now, DateTime.Now.AddDays(5), 10, 10, "Wayne Corp", _address, _document, _email);
-            _subscription.AddPayment(payment);
-            _student.AddSubscription(_subscription);
-            _student.AddSubscription(_subscription);
+            subscription.AddPayment(payment);
+            _student.AddSubscription(subscription);
+            _student.AddSubscription(subscription);
             Assert.IsTrue(_student.Invalid);
         }
 
         [TestMethod]
         public void ShouldReturnErrorWhenSubscriptionHasNoPayment()
         {
-            _student.AddSubscription(_subscription);
+            var subscription = new Subscription(null);
+            _student.AddSubscription(subscription);
             Assert.IsTrue(_student.Invalid);
         }
 
